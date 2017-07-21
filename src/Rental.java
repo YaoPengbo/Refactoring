@@ -8,10 +8,19 @@ public class Rental {
         this.movie = movie;
         this.dayRented = dayRented;
     }
+
     public Movie getMovie() {
         return movie;
     }
     public int getDaysRented() {
         return dayRented;
+    }
+
+    public double getCharge(){
+        return movie.getCharge(dayRented);
+    }
+
+    public int getFrequentRenterPoints(){
+        return movie.getFrequentRenterPoints(dayRented);
     }
 }
