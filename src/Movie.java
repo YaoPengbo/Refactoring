@@ -10,11 +10,11 @@ public class Movie {
     public static final int NEW_RELEASE=2;
 
     private String title;
-    private int priceCode;
+    private Price price;
 
     public Movie(String title, int priceCode) {
         this.title = title;
-        this.priceCode = priceCode;
+        setPriceCode(priceCode);
     }
     public String getTitle() {
         return title;
@@ -22,12 +22,24 @@ public class Movie {
     public void setTitle(String title) {
         this.title = title;
     }
-    public void setPriceCode(int priceCode) {
-        this.priceCode = priceCode;
+    public void setPriceCode(int agrv) {
+        switch (agrv){
+            case REGULAR:
+                price = new RegularPrice();
+                break;
+            case CHILDRENS:
+                price = new ChildrenPrice();
+                break;
+            case NEW_RELEASE:
+                price = new NewReleasePrice();
+                break;
+            default:
+                throw new IllegalArgumentException("Incorrect Price Code");
+        }
     }
 
     public int getPriceCode(){
-        return priceCode;
+        return price.getPriceCode();
     }
 
     public double getCharge(int iDayRented){
@@ -42,7 +54,7 @@ public class Movie {
          */
         double result = 0;
         //determine amounts for each line
-        switch (priceCode) {
+        switch (getPriceCode()) {
             case Movie.REGULAR:
                 result += 2;
                 if (iDayRented > 2) {
