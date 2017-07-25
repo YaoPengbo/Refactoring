@@ -3,7 +3,15 @@
  */
 public class ChildrenPrice extends Price{
     @Override
-    int getPriceCode() {
+    public int getPriceCode() {
         return Movie.CHILDRENS;
+    }
+
+    public double getCharge(int iDayRented){
+        double result = 1.5;
+        if (iDayRented > 3) {
+            result += (iDayRented - 3) * 1.5;
+        }
+        return result;
     }
 }

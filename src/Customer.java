@@ -26,7 +26,7 @@ class Customer {
 
         while (rentals.hasMoreElements()) {
             Rental each = (Rental) rentals.nextElement();
-            result += "\t" + each.getMovie().getTitle() + "\t" + String.valueOf(each.getCharge()) + "\n";
+            result += "\t" + each.getMovie().get_title() + "\t" + String.valueOf(each.getCharge()) + "\n";
         }
 
         result += "Amount owed is " + String.valueOf(getTotalCharge()) + "\n";
